@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fermasis AA2</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('AA2CSGALAXY.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.5);
+      border: 2px solid #fff;
+      border-radius: 20px;
+      padding: 30px;
+      width: 80%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    fieldset {
+      border: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+    legend {
+      font-weight: bold;
+      color: #000;
+      background-color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    input[type="submit"],
+    input[type="reset"] {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+    }
+    input[type="reset"] {
+      background-color: #f44336;
+      color: #fff;
+    }
+    .output {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 style="text-align: center;">???sneila teem annaW !!olleH</h1>
+
+  <form id="signupForm">
+    <fieldset>
+      <legend>FILLING THIS FORM UP WILL BRING YOU TO A PLANET WHERE THERE ARE ALIENS!!!!! BE CAREFUL!!!!</legend>
+      <div style="margin-bottom: 20px;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" onblur="validateInput(this)" onfocus="clearBorder(this)" required>
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <label for="username">Username:</label>
+        <input type="text" id="username" onblur="validateInput(this)" onfocus="clearBorder(this)" required>
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <label>Gender:</label><br>
+        <input type="radio" id="female" name="gender" value="female"> <label for="female">Female</label><br>
+        <input type="radio" id="male" name="gender" value="male"> <label for="male">Male</label><br>
+        <input type="radio" id="preferNotToSay" name="gender" value="prefer not to say"> <label for="preferNotToSay">Prefer not to say</label><br>
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <label for="password">Password:</label>
+        <input type="password" id="password" onblur="validateInput(this)" onfocus="clearBorder(this)" required>
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" onblur="validateInput(this)" onfocus="clearBorder(this)" required>
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <label for="address">Address:</label>
+        <input type="text" id="address" onblur="validateInput(this)" onfocus="clearBorder(this)" required>
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <label for="interest">Interest/s:</label>
+        <input type="text" id="interest" onblur="validateInput(this)" onfocus="clearBorder(this)" required>
+      </div>
+    </fieldset>
+    
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </form>
+
+  <div class="output" id="output"></div>
+</div>
+
+<script>
+  function validateInput(element) {
+    if (element.value === "") {
+      element.style.borderColor = "red";
+    } else {
+      element.style.borderColor = "green";
+    }
+  }
+
+  function clearBorder(element) {
+    element.style.borderColor = "";
+  }
+
+  document.getElementById("signupForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    displayUserInfo();
+  });
+
+  function displayUserInfo() {
+    var name = document.getElementById("name").value;
+    var username = document.getElementById("username").value;
+    var gender = document.querySelector('input[name="gender"]:checked');
+    var genderValue = gender ? gender.value : "Not specified";
+    var password = document.getElementById("password").value;
+    var email = document.getElementById("email").value;
+    var address = document.getElementById("address").value;
+    var interest = document.getElementById("interest").value;
+    
+    var outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = "<h2>The information that you just sent to the aliens:</h2>" +
+                          "<p><strong>Name:</strong> " + name + "</p>" +
+                          "<p><strong>Preferred Username:</strong> " + username + "</p>" +
+                          "<p><strong>Gender:</strong> " + genderValue + "</p>" +
+                          "<p><strong>Password:</strong> " + password + "</p>" +
+                          "<p><strong>Email Address:</strong> " + email + "</p>" +
+                          "<p><strong>Address:</strong> " + address + "</p>" +
+                          "<p><strong>Interest:</strong> " + interest + "</p>";
+  }
+
+  document.getElementById("signupForm").addEventListener("reset", function() {
+    var outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = "";
+  });
+</script>
+
+
+</body>
+</html>
